@@ -48,7 +48,13 @@ namespace ADO.NET.Lesson5_DisconnectedMode
                         column.DataType.ToString());
                 }
 
-                Console.WriteLine("\n\n" + new string('=', 100) + "\n\n"); 
+                Console.WriteLine("\n\n" + new string('=', 100) + "\n\n");
+
+                foreach (DataColumn column in dt.Columns)
+                {
+                    Console.Write("\t{0,30}",
+                        column.ColumnName);
+                }
 
                 foreach (DataRow row in dt.Rows)
                 {
@@ -56,7 +62,7 @@ namespace ADO.NET.Lesson5_DisconnectedMode
 
                     foreach (object cell in cells)
                     {
-                        Console.Write("\t{0}", cell);
+                        Console.Write("\t{0,15}", cell);
                     }
                     Console.WriteLine();
                 }
@@ -67,8 +73,20 @@ namespace ADO.NET.Lesson5_DisconnectedMode
 
             // отклонить изменения
             ds.RejectChanges();
-        
-            
+
+            // получить измененные изменения
+            ds.GetChanges();
+
+            // слияние данных - копирование
+            DataSet dsCopy = new DataSet();
+            dsCopy.Merge(ds);
+
+            // Восстановление оригинального состояния объекта 
+            ds.Reset();
+
+            // ================================================================== //
+
+            // СОБЫТИЯ
         }
 
     }
