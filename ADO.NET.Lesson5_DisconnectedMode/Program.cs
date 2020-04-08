@@ -48,7 +48,7 @@ namespace ADO.NET.Lesson5_DisconnectedMode
                         column.DataType.ToString());
                 }
 
-                Console.WriteLine("\n\n" + new string('=', 100) + "\n\n");
+                Console.WriteLine("\n\n" + new string('=', 100) + "\n\n"); 
 
                 foreach (DataRow row in dt.Rows)
                 {
